@@ -14,6 +14,6 @@ if x > 0 and y > 0:
 elif x < 0 and y < 0:
     PrintCoordinats(x,y,q=3)
 elif x > 0 and y < 0:
-    PrintCoordinats(x,y,q=2)
+    PrintCoordinats(x,y,q=4)
 else:
-    PrintCoordinats(x,y,q=3)
+    PrintCoordinats(x,y,q=2)
