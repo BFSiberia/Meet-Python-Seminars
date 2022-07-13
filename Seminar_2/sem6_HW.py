@@ -4,12 +4,6 @@
 
 import random
 
-# s=[1,2,3]
-# f = open('file.txt','w')
-# for i in range(len(s)):
-#     f.write(str(s[i])+'\n')
-# f.close()
-
 n = abs(int(input('Введите число N: ')))
 
 s = []
@@ -17,6 +11,23 @@ s = []
 for i in range(-n, n+1):
     s.append(i)
 print(f'Список элементов от {-n} до {n}: {s}')
+
+# Создаем файл file.txt с набором из 3x случайных индексов
+
+with open('file.txt', 'w') as f:
+    for i in range(3):
+        f.write(f'{random.randint(0,len(s)-1)}\n')
+
+# Произведение элементов на позициях из file.txt
+
+f= open('file.txt', 'r')
+result=1
+for line in f:
+    result *= s[int(line)]
+print(f'Произведение элементов: {result}')
+f.close()
+
+# Перемешивание элементов списка
 
 for i in range(len(s)):
     # Извлечение числа со случайным индексом
