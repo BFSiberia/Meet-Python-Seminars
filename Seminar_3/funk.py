@@ -1,6 +1,3 @@
-from threading import local
-
-
 def Presence (list, n):
     for item in list:
         if n in item:
