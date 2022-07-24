@@ -43,48 +43,38 @@ def Ext(string):
             point=ind+3
         else :
             l1.append((poly[point:ind],'1'))
-            
-    if poly[ind+1] =='^':
-        l1.append((poly[ind+2:-2],'0'))
-    elif poly[ind+1] =='=':
-        pass
-    else:
+
+    if poly[ind+1] !='^' and poly[ind+1] !='=':
         l1.append((poly[ind+1:-2],'0'))
         
     
 
     return l1
 
+def Transform(poly):
+    sl=l+1
+    if k>l:
+        sl=k+1
+    transresult=['0']*sl
+    polystr=Ext(poly)
+
+    for i in range(len(transresult)-1,-1,-1):
+        for j in range(len(polystr)):
+            if int(polystr[j][1])==i:
+                transresult[len(transresult)-1-i]= polystr[j][0]
+    return transresult
+
 # Генерируем два многочлена с разными степенями k и l
 k,l=5,4
-poly1=PolyGen(k) #'-2x^5+2x^4+1x^3+3x^2=0' #
-# poly2=PolyGen(l)
-
-# print(poly2)
-# print(Ext(poly2))
+poly1=PolyGen(k)
+poly2=PolyGen(l)
 
 # Формируем строки для записи в файл и записываем коэфициенты в файлы poly1 и poly2
-polystr=Ext(poly1)
-print(poly1)
-print(polystr)
-
-exit()
-sl=l+1
-if k>l:
-    sl=k+1
-p1result=['0']*sl
-
-for i in range(len(p1result)-1,-1,-1):
-    for j in range(len(polystr)):
-        if int(polystr[j][1])==i:
-            p1result[len(p1result)-1-i]= polystr[j][0]
-
 with open ('poly1.txt', 'w') as p1:
-    p1.writelines("%s " % i for i in p1result)
+    p1.writelines("%s " % i for i in Transform(poly1))
 
-exit()
 with open ('poly2.txt', 'w') as p2:
-    p2.writelines('%s ' % rnd.randint(-20,20) for i in range(4))
+    p2.writelines("%s " % i for i in Transform(poly2))
 
 # Суммируем многочлены
 with open ('poly1.txt', 'r') as p1: 
