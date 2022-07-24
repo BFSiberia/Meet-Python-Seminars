@@ -5,18 +5,19 @@
 import random as rnd
 
 k = 5
+c=0
 
 def PolyGen(k):
     draft =[rnd.randint(0,100) for i in range(k+1)]
     fill_in=[]
-    sign=rnd.choice(['-','+'])
-    mult=''
-    temp='x'
     for i in range(len(draft)):
+        sign=rnd.choice(['-','+'])
         if draft[i]==0:
+            c+=1
             continue
         elif i<k-1:
-            mult='^{}'.format(k-i)
+            mult=''.join('^{}'.format(k-i))
+            temp='x'
         elif i==k-1:
             mult=''
         else:
