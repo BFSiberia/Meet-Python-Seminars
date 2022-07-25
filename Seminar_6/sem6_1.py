@@ -54,6 +54,8 @@ def Breckets(x):
 s1 = '5*(3-6*(2+1)/(15-5))'
 y=''.join(map(lambda i: i if i.isdigit() else ' '+i+' ', s1))
 x=[int(i) if i.isdigit() else i for i in y.split()]
+# Или просто import re
+# x=re.findall(r'(\d+|\D)',s1)
 
 print(Breckets(x))
 print(eval(s1))
