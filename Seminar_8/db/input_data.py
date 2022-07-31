@@ -8,7 +8,6 @@ def data_in():
             'Статус': input('Введите статус ученика: ')
 
         }
-    return dictionry
+    with open ('student.txt', 'a', encoding='utf-8') as f:
+        f.write(f'{data_in()}\n')
 
-with open ('student.txt', 'a', encoding='utf-8') as f:
-    f.write(f'{data_in()}\n')

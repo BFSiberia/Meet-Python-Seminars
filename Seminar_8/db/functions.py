@@ -13,5 +13,3 @@ def search():
                     return result
 
     return result
-
-print(search())
